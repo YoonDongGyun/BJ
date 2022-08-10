@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 //dfs를 활용해 탐색을 진행하고 이미 방문했던 곳이 있으면 사이클로 판단
-public class BJ_4803{
+public class BJ_04803{
 	
 	static BufferedReader input;
 	static StringBuilder output= new StringBuilder();
