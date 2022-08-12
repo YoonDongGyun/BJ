@@ -12,10 +12,11 @@ import java.util.StringTokenizer;
 
 @author itsme
 @since 2022. 8. 12.
-@see
-@performance
-@category #
-@note */
+@see https://www.acmicpc.net/problem/15686
+@performance 12316KB 140ms
+@category #조합 #완전탐색
+@note 시간내에 조합 활용 가능한지 먼저 판단해보고 이후에 구현하면 더 좋을 듯 하다 
+*/
 public class BJ_15686 {
 
 	static BufferedReader input;
