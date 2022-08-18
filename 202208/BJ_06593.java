@@ -59,7 +59,7 @@ public class BJ_06593{
 		}
 	}
 	
-	//bfs x->c y->r z->l
+	//bfs
 	static void bfs(int c, int r, int l) {
 		Queue<int[]> q = new LinkedList<>();//bfs 활용 위해 Queue 선언
 		boolean[][][] visited = new boolean[L][R][C];//방문 여부
