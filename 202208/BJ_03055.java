@@ -11,7 +11,7 @@ import java.util.StringTokenizer;
 @author itsme
 @since 2022. 8. 24.
 @see https://www.acmicpc.net/problem/3055
-@performance 12644kb 192ms
+@performance 12580kb 152ms
 @category #bfs
 @note bfs 쓸 때 계속 시간이 많이 나오는데 줄이는 방법 고민해보자 
 */
@@ -23,9 +23,9 @@ public class BJ_03055{
 	static int R,C;
 	static char[][] map;
 	static int[][] deltas= {{1,0},{-1,0},{0,1},{0,-1}};
-	static List<Point> water,start;
+	static List<Point> water;
+	static int startR, startC;
 	static int count=Integer.MAX_VALUE;
-	static boolean[][] visited;
 	
 	static class Point{
 		int r,c,cnt;
@@ -53,10 +53,8 @@ public class BJ_03055{
 		C=Integer.parseInt(tokens.nextToken());
 		
 		map=new char[R][C];
-		visited= new boolean[R][C];
 		
 		water= new ArrayList<>();
-		start= new ArrayList<>();
 		
 		for(int i=0;i<R;i++) {
 			String line=input.readLine();
@@ -67,13 +65,14 @@ public class BJ_03055{
 					water.add(new Point(i,j));
 				}
 				else if(map[i][j]=='S') {
-					start.add(new Point(i,j));
+					startR=i;
+					startC=j;
 					map[i][j]='.';
 				}
 			}
 		}
 		
-		bfs(start.get(0).r, start.get(0).c,0);
+		bfs(startR, startC,0);
 		
 		if(count==Integer.MAX_VALUE) {
 			output.append("KAKTUS");
@@ -115,20 +114,23 @@ public class BJ_03055{
 				pcount=current.cnt;
 			}
 
-			visited[current.r][current.c]=true;
+			map[current.r][current.c]='*';
 			
 			for(int i=0;i<deltas.length;i++) {
 				int nr=current.r+deltas[i][0];
 				int nc=current.c+deltas[i][1];
 				
-				if(isIn(nr,nc) && !visited[nr][nc] && map[nr][nc]=='.') {
-					visited[nr][nc]=true;
-					queue.offer(new Point(nr,nc,current.cnt+1));
+				if(isIn(nr,nc)) {
+					if(map[nr][nc]=='.') {
+						map[nr][nc]='*';
+						queue.offer(new Point(nr,nc,current.cnt+1));
+					}
+					else if(map[nr][nc]=='D') {
+						count=Math.min(count, current.cnt+1);
+						break;
+					}					
 				}
-				else if(isIn(nr,nc) && !visited[nr][nc] && map[nr][nc]=='D') {
-					count=Math.min(count, current.cnt+1);
-					break;
-				}
+				
 			}
 		}
 	}
