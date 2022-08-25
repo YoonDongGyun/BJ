@@ -5,7 +5,7 @@ import java.util.StringTokenizer;
 
 /**
 @author itsme
-@since 2022. 8. 25.
+@since 2022. 8. 24.
 @see https://www.acmicpc.net/problem/1149
 @performance 12144KB 88ms
 @category #DP 
