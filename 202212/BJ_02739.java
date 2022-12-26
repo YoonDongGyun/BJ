@@ -11,7 +11,7 @@ public class BJ_02739 {
 		int N = Integer.parseInt(input.readLine());
 		
 		for(int i=1;i<=9;i++) {
-			output.append(String.format("%d * %d = %d%n", N,i,N*i));
+			output.append(String.format("%d * %d = %d%n", N, i, N*i));
 		}
 		
 		System.out.println(output);
